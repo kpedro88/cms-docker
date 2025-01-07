@@ -50,4 +50,8 @@ RUN yum install -y python3-pip python2-pip gfal2-util-scripts gfal2-all python3-
 #User packages
 RUN yum install -y emacs screen && yum clean all
 
+#lndir at the end (only use sl7 repo for this package; others come from epel/cern)
+RUN mv /tmp/extra/sl7.repo /etc/yum.repos.d/ &&\
+    yum install -y imake
+
 LABEL build-date="@BUILD_DATE@"
